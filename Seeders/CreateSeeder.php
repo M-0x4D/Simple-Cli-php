@@ -1,0 +1,40 @@
+<?php
+
+namespace ox4D\cli\seeders;
+
+class CreateSeeder
+{
+    protected static $fileName;
+
+    public static function runCommand($fileName)
+    {
+        $dir = __DIR__ . '/../../Src/Database/Seeders/';
+        self::$fileName = $dir.$fileName;
+        $myfile = fopen(self::$fileName.".php", "w") or die("Unable to create file!");
+        $variable = '$'.'variable';
+        $variables = '$'.'variables';
+        $manufacturer ='$'.'manufacturer';
+        $create = 'create';
+        $txt = "<?php
+
+namespace MvcCore\Jtl\Database\Seeders;
+
+use MvcCore\Jtl\Support\Debug\Debugger;
+
+        
+    class $fileName
+    {
+    
+        public function create()
+        {
+            $variables = [];
+            array_map(fn ($variable) => 'Write your code here!', $variables);
+            
+        }
+    }";
+        fwrite($myfile, $txt);
+        fclose($myfile);
+        echo "[+] $fileName Seeder created successfully!\n";
+
+    }
+}
