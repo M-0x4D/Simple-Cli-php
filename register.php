@@ -13,9 +13,11 @@ use ox4D\cli\requests\CreateRequest;
 function  excute($command, $fileName)
 {
     $sysCommands = require_once __DIR__ . '/commands.php';
-    foreach ($sysCommands as $keyX => $valueX) {
-        if ($keyX === $command) {
-                $valueX[0]::runCommand($fileName);
+    foreach ($sysCommands as $sysCommand => $action) {
+        if ($sysCommand === $command) {
+            $controller = $action[0];
+            $method = $action[1];
+                $controller::$method($fileName);
         }
     }
 }
