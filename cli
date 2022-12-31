@@ -13,4 +13,4 @@ if (count($argv) > 1) {
     if (isset($argv[2])) {
         excute($argv[1], $argv[2]);
     }
-} else echo 'no arguments yet !!';
+} else echo 'no arguments passed yet !!';

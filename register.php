@@ -17,7 +17,24 @@ function  excute($command, $fileName)
         if ($sysCommand === $command) {
             $controller = $action[0];
             $method = $action[1];
+            $reflection = new ReflectionMethod($controller , $method);
+            $res = $reflection->isStatic();
+            if ($res) {
                 $controller::$method($fileName);
+            }else {
+                $obj = new $controller();
+                $obj->$method($fileName);
+            }
         }
+    }
+}
+
+
+function is_static($action)
+{
+    $controller = $action[0];
+    $method = $action[1];
+    if ($controller::$method) {
+        
     }
 }
