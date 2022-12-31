@@ -9,11 +9,14 @@ use ox4D\cli\seeders\CreateSeeder;
 
 return [
 
-    'make-model' => [CreateModel::class, 'runCommand'],
-    'make-migration' => [CreateMigration::class, 'create'],
-    'make-migrate' =>[migrate::class,'create'],
-    'make-resource' =>[ResourceController::class,'runCommand'],
-    'make-empty' => [EmptyController::class, 'runCommand'],
-    'make-request' => [CreateRequest::class , 'runCommand'],
-    'make-seeder' => [CreateSeeder::class , 'runCommand']
+    'help' => [Help::class,'runCommand'],
+    '-h'=>[Help::class,'runCommand'],
+    '-make:migration' => [CreateMigration::class, 'create'],
+    '-make:migrate' =>[migrate::class,'create'],
+    '-make:resource' =>[ResourceController::class,'runCommand'],
+    '-make:empty' => [EmptyController::class, 'runCommand'],
+    '-make:seeder' => [CreateSeeder::class, 'runCommand'],
+    '-make:model' => [CreateModel::class, 'runCommand'],
+    '-make:request' => [CreateRequest::class, 'runCommand'],
+    '-add:command' => []
 ];
